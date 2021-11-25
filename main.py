@@ -1,19 +1,19 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
-import sys
+import cx_Oracle
+
+# create connection
+conn = cx_Oracle.connect('c##scott/tiger@//192.168.0.6:1521/magazynw')
+print(conn.version)
 
 
-def main():
-    app = QApplication(sys.argv)
-    win = QMainWindow()
-    win.setGeometry(200, 200, 300, 300)
-    win.setWindowTitle("My first window!")
+# create cursor
+cur = conn.cursor()
 
-    label = QLabel(win)
-    label.setText("my first label")
-    label.move(50, 50)
+sql_query = """ 
+SELECT * FROM czesc WHERE nazwa = :proba
+"""
 
-    win.show()
-    sys.exit(app.exec_())
-
-
-main()
+cur.execute(sql_query, ["test1"])
+for line in cur:
+    print(line)
+cur.close()
+conn.close()
