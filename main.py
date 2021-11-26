@@ -1,19 +1,26 @@
 import cx_Oracle
-
-# create connection
-conn = cx_Oracle.connect('c##scott/tiger@//192.168.0.6:1521/magazynw')
-print(conn.version)
+import login
+import logging as log
 
 
-# create cursor
-cur = conn.cursor()
+class DB:
+    def __init__(self, host):
+        self.conn = cx_Oracle.connect(host)
+        self.cur = self.conn.cursor()
+        print(self.conn.version)
 
-sql_query = """ 
-SELECT * FROM czesc WHERE nazwa = :proba
-"""
+    def execute_query(self, query):
+        sql_query = query
+        self.cur.execute(sql_query)
 
-cur.execute(sql_query, ["test1"])
-for line in cur:
-    print(line)
-cur.close()
-conn.close()
+    def print_query(self):
+        for line in self.cur:
+            print(line)
+        self.cur.close()
+        self.conn.close()
+
+
+p1 = DB('c##scott/tiger@//192.168.0.6:1521/magazynw')
+p1.execute_query("""SELECT * FROM CZESC""")
+p1.print_query()
+
