@@ -1,6 +1,7 @@
 import PyQt5.QtWidgets as Qtw
 import PyQt5.QtGui as Qtg
-
+from PyQt5 import QtCore, QtGui, QtWidgets
+from window2 import Ui_SecondWindow
 
 class MainWindow(Qtw.QWidget):
 
@@ -14,29 +15,28 @@ class MainWindow(Qtw.QWidget):
 
         # Create a label
         my_label = Qtw.QLabel("Magazyn części zamiennych do samochodów")
-        self.layout().addWidget(my_label)
-
         # change font size of label
         my_label.setFont(Qtg.QFont('Helvetica', 18))
+        self.layout().addWidget(my_label)
 
-        # Create entry box
-        my_entry = Qtw.QLineEdit()
-        my_entry.setObjectName("name_field")
-        my_entry.setText("Placeholder")
-        self.layout().addWidget(my_entry)
+        # Create combo box
+        my_combo = Qtw.QComboBox(self)
+        # Add items To The Combo Box
+        my_combo.addItem("Magazyn A")
+        my_combo.addItem("Magazyn B")
+        my_combo.addItem("Admin")
+        self.layout().addWidget(my_combo)
 
-        def press_it():
-            # Add name to label
-            my_label.setText(f'Hello {my_entry.text()}')
-            # Clear the entry box
-            my_entry.setText("")
-
+        # Create a button
         my_button = Qtw.QPushButton("Połącz")
-        my_button.clicked.connect(press_it)
+        my_button.clicked.connect(lambda: press_it())
         self.layout().addWidget(my_button)
 
         self.show()
 
+        def press_it():
+            # Add name to label
+            my_label.setText(f"Hello {my_combo.currentText()}")
 
 
 
