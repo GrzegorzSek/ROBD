@@ -5,20 +5,21 @@ import main
 
 class Ui_ThirdWindow(object):
     def setupUi(self, ThirdWindow):
-        p1 = main.DB('c##scott/tiger@//192.168.0.137:1521/orcl1')
+        p1 = main.DB('c##scott/tiger@//192.168.0.8:1521/orcl1')
         p1.execute_query("""SELECT * FROM TEST_VIEW""")
         ThirdWindow.setObjectName("ThirdWindow")
         ThirdWindow.resize(700, 700)
         self.tableWidget = QtWidgets.QTableWidget(ThirdWindow)
         self.tableWidget.setGeometry(QtCore.QRect(20, 20, 660, 660))
-        self.tableWidget.setColumnCount(2)
+        self.tableWidget.setColumnCount(1)
         self.tableWidget.setHorizontalHeaderLabels(["ID", "Wartość"])
         for line in p1.cur:
             rows = self.tableWidget.rowCount()
             self.tableWidget.setRowCount(rows + 1)
-            self.tableWidget.setItem(rows, 0, QTableWidgetItem(str(line[0])))
-            self.tableWidget.setItem(rows, 1, QTableWidgetItem(line[1]))
-        self.tableWidget.resizeColumnsToContents()
+            self.tableWidget.setItem(rows, 0, QTableWidgetItem(line[1]))
+        header = self.tableWidget.horizontalHeader()
+        header.setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
 
         self.centralwidget = QtWidgets.QWidget(ThirdWindow)
         self.centralwidget.setObjectName("centralwidget")

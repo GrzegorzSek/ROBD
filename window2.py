@@ -5,28 +5,27 @@ import main
 
 class Ui_SecondWindow(object):
     def setupUi(self, SecondWindow):
-        p1 = main.DB('c##scott/tiger@//192.168.0.137:1521/orcl1')
+        p1 = main.DB('c##scott/tiger@//192.168.0.8:1521/orcl1')
         p1.execute_query("""SELECT * FROM KLENCI1""")
         SecondWindow.setObjectName("SecondWindow")
         SecondWindow.resize(700, 700)
         self.tableWidget = QtWidgets.QTableWidget(SecondWindow)
         self.tableWidget.setGeometry(QtCore.QRect(20, 20, 660, 660))
-        self.tableWidget.setColumnCount(4)
-        self.tableWidget.setHorizontalHeaderLabels(["ID", "Imie", "Nazwisko", "Oddział"])
+        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setHorizontalHeaderLabels(["Imie", "Nazwisko", "Oddział"])
         for line in p1.cur:
             rows = self.tableWidget.rowCount()
             self.tableWidget.setRowCount(rows + 1)
-            self.tableWidget.setItem(rows, 0, QTableWidgetItem(str(line[0])))
-            self.tableWidget.setItem(rows, 1, QTableWidgetItem(line[1]))
-            self.tableWidget.setItem(rows, 2, QTableWidgetItem(line[2]))
-            self.tableWidget.setItem(rows, 3, QTableWidgetItem(line[3]))
+            self.tableWidget.setItem(rows, 0, QTableWidgetItem(line[1]))
+            self.tableWidget.setItem(rows, 1, QTableWidgetItem(line[2]))
+            self.tableWidget.setItem(rows, 2, QTableWidgetItem(line[3]))
+
 
         header = self.tableWidget.horizontalHeader()
         header.setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
         header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
         header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
-        header.setSectionResizeMode(3, QtWidgets.QHeaderView.Stretch)
         self.centralwidget = QtWidgets.QWidget(SecondWindow)
         self.centralwidget.setObjectName("centralwidget")
         font = QtGui.QFont()
