@@ -1,18 +1,29 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QTableWidgetItem
+import main
 
 
 class Ui_ThirdWindow(object):
     def setupUi(self, ThirdWindow):
+        p1 = main.DB('c##scott/tiger@//192.168.0.137:1521/orcl1')
+        p1.execute_query("""SELECT * FROM TEST_VIEW""")
         ThirdWindow.setObjectName("ThirdWindow")
-        ThirdWindow.resize(515, 127)
+        ThirdWindow.resize(700, 700)
+        self.tableWidget = QtWidgets.QTableWidget(ThirdWindow)
+        self.tableWidget.setGeometry(QtCore.QRect(20, 20, 660, 660))
+        self.tableWidget.setColumnCount(2)
+        self.tableWidget.setHorizontalHeaderLabels(["ID", "Wartość"])
+        for line in p1.cur:
+            rows = self.tableWidget.rowCount()
+            self.tableWidget.setRowCount(rows + 1)
+            self.tableWidget.setItem(rows, 0, QTableWidgetItem(str(line[0])))
+            self.tableWidget.setItem(rows, 1, QTableWidgetItem(line[1]))
+        self.tableWidget.resizeColumnsToContents()
+
         self.centralwidget = QtWidgets.QWidget(ThirdWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(20, 20, 441, 51))
         font = QtGui.QFont()
         font.setPointSize(28)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
         ThirdWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(ThirdWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 515, 21))
@@ -27,8 +38,7 @@ class Ui_ThirdWindow(object):
 
     def retranslateUi(self, ThirdWindow):
         _translate = QtCore.QCoreApplication.translate
-        ThirdWindow.setWindowTitle(_translate("ThirdWindow", "MainWindow"))
-        self.label.setText(_translate("ThirdWindow", "Third Window!!!"))
+        ThirdWindow.setWindowTitle(_translate("ThirdWindow", "Magazyn B"))
 
 
 if __name__ == "__main__":

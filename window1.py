@@ -1,50 +1,46 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from window2 import Ui_SecondWindow
 from window3 import Ui_ThirdWindow
-from window4 import Ui_AdminWindow
 
 
 
 class Ui_MainWindow(object):
     def openWindow(self):
-        magazyn = self.comboBox.currentText()
-        print(magazyn)
-        if magazyn == "Magazyn A":
+        if self.comboBox.currentText() == "Magazyn A":
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_SecondWindow()
             self.ui.setupUi(self.window)
             self.window.show()
+            MainWindow.hide()
 
-        elif magazyn == "Magazyn B":
+        else:
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_ThirdWindow()
             self.ui.setupUi(self.window)
             self.window.show()
-
-        else:
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_AdminWindow()
-            self.ui.setupUi(self.window)
-            self.window.show()
+            MainWindow.hide()
 
 
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(452, 277)
+        MainWindow.resize(500, 310)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(20, 20, 460, 70))
         self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox.setGeometry(QtCore.QRect(90, 20, 261, 71))
+        self.comboBox.setGeometry(QtCore.QRect(20, 110, 460, 70))
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("Admin")
         self.comboBox.addItem("Magazyn A")
         self.comboBox.addItem("Magazyn B")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.clicked.connect(lambda: self.openWindow())
-        self.pushButton.setGeometry(QtCore.QRect(90, 110, 261, 71))
+        self.pushButton.setGeometry(QtCore.QRect(20, 200, 460, 70))
         font = QtGui.QFont()
         font.setPointSize(16)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
         self.comboBox.setFont(font)
         self.pushButton.setFont(font)
         self.pushButton.setObjectName("pushButton")
@@ -64,6 +60,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton.setText(_translate("MainWindow", "Połącz"))
+        self.label.setText(_translate("MainWindow", "Magazyn części samochodowych"))
+
 
 
 if __name__ == "__main__":

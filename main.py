@@ -1,7 +1,4 @@
 import cx_Oracle
-import login
-import logging as log
-
 
 class DB:
     def __init__(self, host):
@@ -20,7 +17,7 @@ class DB:
         self.conn.close()
 
 
-p1 = DB('c##scott/tiger@//192.168.0.6:1521/magazynw')
-p1.execute_query("""SELECT * FROM CZESC""")
-p1.print_query()
+#p1 = DB('c##scott/tiger@//192.168.0.137:1521/orcl1')
+#p1.execute_query("""SELECT * FROM KLENCI1""")
+#p1.print_query()
 
