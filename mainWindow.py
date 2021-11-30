@@ -2,26 +2,19 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from MagazynA_mainWindow import Ui_SecondSetupWindow
 from MagazynB_mainWindow import Ui_ThirdSetupWindow
 
-
-
-
 class Ui_MainWindow(object):
     def openWindow(self):
         if self.comboBox.currentText() == "Magazyn A":
             self.window = QtWidgets.QMainWindow()
-            #self.ui = Ui_SecondWindow()
             self.ui = Ui_SecondSetupWindow()
             self.ui.setupUi(self.window)
             self.window.show()
-            #MainWindow.hide()
 
         else:
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_ThirdSetupWindow()
             self.ui.setupUi(self.window)
             self.window.show()
-            #MainWindow.hide()
-
 
 
     def setupUi(self, MainWindow):

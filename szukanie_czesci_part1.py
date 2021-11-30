@@ -1,13 +1,15 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from przegladanie_czesci import Ui_ViewPartsWindow
 
 
 class Ui_SearchPartWindow(object):
     def openWindow(self):
         txt = self.inputBox.toPlainText()
         print(txt)
-
-
-
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_ViewPartsWindow()
+        self.ui.setupUi(self.window, 1)
+        self.window.show()
 
 
     def setupUi(self, SearchPartWindow, sql_code):
@@ -35,6 +37,7 @@ class Ui_SearchPartWindow(object):
 
         font = QtGui.QFont()
         font.setPointSize(16)
+        self.inputBox.setFont(font)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.pushButton.setFont(font)

@@ -1,6 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from szukanie_czesci_part1 import  Ui_SearchPartWindow
 from dodawanie_czesci_part1 import Ui_AddPartWindow
+from przegladanie_czesci import Ui_ViewPartsWindow
+from przegladanie_klienci import Ui_ViewClientsWindow
+from przegladanie_auta import Ui_ViewCarsWindow
 
 
 
@@ -9,19 +12,28 @@ class Ui_SecondSetupWindow(object):
         if number == 1:
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_AddPartWindow()
-            self.ui.setupUi(self.window)
+            self.ui.setupUi(self.window, 1)
             self.window.show()
         elif number == 2:
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_SearchPartWindow()
-            self.ui.setupUi(self.window)
+            self.ui.setupUi(self.window, 1)
             self.window.show()
         elif number == 3:
-            pass
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_ViewPartsWindow()
+            self.ui.setupUi(self.window, 1)
+            self.window.show()
         elif number == 4:
-            pass
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_ViewClientsWindow()
+            self.ui.setupUi(self.window, 1)
+            self.window.show()
         else:
-            pass
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_ViewCarsWindow()
+            self.ui.setupUi(self.window, 1)
+            self.window.show()
 
     def setupUi(self, SecondSetupWindow):
         SecondSetupWindow.setObjectName("SecondSetupWindow")
@@ -47,7 +59,7 @@ class Ui_SecondSetupWindow(object):
 
         self.przegladajauto = QtWidgets.QPushButton(self.centralwidget)
         self.przegladajauto.clicked.connect(lambda: self.openWindow(5))
-        self.przegladajauto.setGeometry(QtCore.QRect(20, 370, 215, 70))
+        self.przegladajauto.setGeometry(QtCore.QRect(20, 380, 215, 70))
 
         font = QtGui.QFont()
         font.setPointSize(17)
@@ -72,8 +84,6 @@ class Ui_SecondSetupWindow(object):
         self.photo.setPixmap(QtGui.QPixmap("logo.png"))
         self.photo.setScaledContents(True)
         self.photo.setObjectName("photo")
-
-
 
 
         SecondSetupWindow.setCentralWidget(self.centralwidget)
