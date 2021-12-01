@@ -1,7 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import main
 
 
 class Ui_AddPartWindow(object):
+    adress = None;
     def update(self):
         nazwa = self.inputBox1.toPlainText()
         opis = self.inputBox2.toPlainText()
@@ -11,9 +13,12 @@ class Ui_AddPartWindow(object):
 
         print(nazwa + "-" + opis + "-" + magazyn_id + "-" + liczba_sztuk + "-" +
               model_id)
+        p1 = main.DB(self.adress)
+        p1.cur.callproc('DODAJ_CZESC', [str(nazwa).lower(), str(opis).lower(), int(magazyn_id), int(liczba_sztuk), int(model_id)])
 
 
-    def setupUi(self, AddPartWindow, sql_code, adress):
+    def setupUi(self, AddPartWindow, adress):
+        self.adress = adress
         AddPartWindow.setObjectName("SearchPartWindow")
         AddPartWindow.resize(250, 350)
         self.centralwidget = QtWidgets.QWidget(AddPartWindow)

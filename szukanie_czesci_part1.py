@@ -3,16 +3,18 @@ from przegladanie_czesci import Ui_ViewPartsWindow
 
 
 class Ui_SearchPartWindow(object):
+    adress = None
     def openWindow(self):
-        txt = self.inputBox.toPlainText()
-        print(txt)
+        part_txt = str(self.inputBox.toPlainText()).lower()
+        sql = "SELECT * FROM czesc_view WHERE '" + part_txt + "' IN(czesc_nazwa, marka_nazwa, model_nazwa)"
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_ViewPartsWindow()
-        self.ui.setupUi(self.window, 1)
+        self.ui.setupUi(self.window, sql, self.adress)
         self.window.show()
 
 
-    def setupUi(self, SearchPartWindow, sql_code, adress):
+    def setupUi(self, SearchPartWindow, adress):
+        self.adress = adress
         SearchPartWindow.setObjectName("SearchPartWindow")
         SearchPartWindow.resize(500, 410)
         self.centralwidget = QtWidgets.QWidget(SearchPartWindow)
@@ -20,20 +22,20 @@ class Ui_SearchPartWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(20, 20, 460, 70))
 
-        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox.setGeometry(QtCore.QRect(20, 110, 460, 70))
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("Nazwa")
-        self.comboBox.addItem("Model")
+        # self.comboBox = QtWidgets.QComboBox(self.centralwidget)
+        # self.comboBox.setGeometry(QtCore.QRect(20, 110, 460, 70))
+        # self.comboBox.setObjectName("comboBox")
+        # self.comboBox.addItem("Nazwa")
+        # self.comboBox.addItem("Model")
 
         self.inputBox = QtWidgets.QTextEdit(self.centralwidget)
-        self.inputBox.setGeometry((QtCore.QRect(20, 200, 460, 70)))
+        self.inputBox.setGeometry((QtCore.QRect(20, 110, 460, 70)))
         txt = self.inputBox.toPlainText()
 
 
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.clicked.connect(lambda: self.openWindow())
-        self.pushButton.setGeometry(QtCore.QRect(20, 290, 460, 70))
+        self.pushButton.setGeometry(QtCore.QRect(20, 200, 460, 70))
 
         font = QtGui.QFont()
         font.setPointSize(16)

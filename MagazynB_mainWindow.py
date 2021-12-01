@@ -12,16 +12,14 @@ class Ui_ThirdSetupWindow(object):
 
     def openWindow(self, number):
         if number == 1:
-            sql_code = """SELECT * FROM """
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_AddPartWindow()
-            self.ui.setupUi(self.window, sql_code, self.adress)
+            self.ui.setupUi(self.window, self.adress)
             self.window.show()
         elif number == 2:
-            sql_code = """SELECT * FROM """
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_SearchPartWindow()
-            self.ui.setupUi(self.window, sql_code, self.adress)
+            self.ui.setupUi(self.window, self.adress)
             self.window.show()
         elif number == 3:
             try:
@@ -34,7 +32,7 @@ class Ui_ThirdSetupWindow(object):
                 print("Błąd")
         elif number == 4:
             try:
-                sql_code = """SELECT * FROM """
+                sql_code = """SELECT * FROM klient_view"""
                 self.window = QtWidgets.QMainWindow()
                 self.ui = Ui_ViewClientsWindow()
                 self.ui.setupUi(self.window, sql_code, self.adress)
@@ -43,7 +41,7 @@ class Ui_ThirdSetupWindow(object):
                 print("Błąd")
         else:
             try:
-                sql_code = """SELECT * FROM """
+                sql_code = """SELECT * FROM auta_view"""
                 self.window = QtWidgets.QMainWindow()
                 self.ui = Ui_ViewCarsWindow()
                 self.ui.setupUi(self.window, sql_code, self.adress)

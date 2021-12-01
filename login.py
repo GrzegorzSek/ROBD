@@ -1,7 +1,5 @@
 import PyQt5.QtWidgets as Qtw
 import PyQt5.QtGui as Qtg
-from PyQt5 import QtCore, QtGui, QtWidgets
-from window2 import Ui_SecondWindow
 
 class MainWindow(Qtw.QWidget):
 
