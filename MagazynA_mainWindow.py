@@ -10,7 +10,7 @@ from dodawanie_klient import Ui_AddClientWindow
 
 class Ui_SecondSetupWindow(object):
 
-    adress = 'c##scott/tiger@//192.168.0.8:1521/orcl1'
+    adress = 'c##scott/tiger@//192.168.0.3:1521/orcl1'
 
     def openWindow(self, number):
         if number == 1:
