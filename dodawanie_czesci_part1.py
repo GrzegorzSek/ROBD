@@ -7,12 +7,12 @@ class Ui_AddPartWindow(object):
     def update(self):
         nazwa = self.inputBox1.toPlainText()
         opis = self.inputBox2.toPlainText()
-        magazyn_id = self.comboBox3.currentText()
+        magazyn_id = check_value_comboBox3(self.comboBox3.currentText())
         liczba_sztuk = self.inputBox4.toPlainText()
-        model_id = self.comboBox5.currentText()
+        model_id = check_value_comboBox5(self.comboBox5.currentText())
 
-        print(nazwa + "-" + opis + "-" + magazyn_id + "-" + liczba_sztuk + "-" +
-              model_id)
+        print(nazwa + "-" + opis + "-" + str(magazyn_id) + "-" + liczba_sztuk + "-" +
+              str(model_id))
         try:
 
             p1 = main.DB(self.adress)
@@ -21,10 +21,11 @@ class Ui_AddPartWindow(object):
             print("Błąd przy dodawaniu")
 
 
+
     def setupUi(self, AddPartWindow, adress):
         self.adress = adress
         AddPartWindow.setObjectName("SearchPartWindow")
-        AddPartWindow.resize(250, 350)
+        AddPartWindow.resize(270, 350)
         self.centralwidget = QtWidgets.QWidget(AddPartWindow)
         self.centralwidget.setObjectName("centralwidget")
 
@@ -49,12 +50,10 @@ class Ui_AddPartWindow(object):
         self.label3 = QtWidgets.QLabel(self.centralwidget)
         self.label3.setGeometry(QtCore.QRect(20, 140, 70, 30))
 
-        # self.inputBox3 = QtWidgets.QTextEdit(self.centralwidget)
-        # self.inputBox3.setGeometry((QtCore.QRect(110, 140, 110, 30)))
         self.comboBox3 = QtWidgets.QComboBox(self.centralwidget)
         self.comboBox3.setGeometry(QtCore.QRect(110, 140, 110, 30))
-        self.comboBox3.addItem("1")
-        self.comboBox3.addItem("2")
+        self.comboBox3.addItem("GGG")
+        self.comboBox3.addItem("JJJ")
 
         # IV rząd
         self.label4 = QtWidgets.QLabel(self.centralwidget)
@@ -67,16 +66,15 @@ class Ui_AddPartWindow(object):
         self.label5 = QtWidgets.QLabel(self.centralwidget)
         self.label5.setGeometry(QtCore.QRect(20, 220, 70, 30))
 
-        # self.inputBox5 = QtWidgets.QTextEdit(self.centralwidget)
-        # self.inputBox5.setGeometry((QtCore.QRect(110, 220, 110, 30)))
         self.comboBox5 = QtWidgets.QComboBox(self.centralwidget)
         self.comboBox5.setGeometry(QtCore.QRect(110, 220, 110, 30))
-        self.comboBox5.addItem("1")
-        self.comboBox5.addItem("2")
-        self.comboBox5.addItem("3")
-        self.comboBox5.addItem("4")
-        self.comboBox5.addItem("5")
-        self.comboBox5.addItem("6")
+        self.comboBox5.addItem("gallardo")
+        self.comboBox5.addItem("qashqai")
+        self.comboBox5.addItem("Q5")
+        self.comboBox5.addItem("passat")
+        self.comboBox5.addItem("urus")
+        self.comboBox5.addItem("Tiguan")
+        self.comboBox5.addItem("punto")
 
 
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -112,6 +110,33 @@ class Ui_AddPartWindow(object):
         self.label3.setText(_translate("AddPartWindow", "Magazyn_id"))
         self.label4.setText(_translate("AddPartWindow", "Liczba sztuk"))
         self.label5.setText(_translate("AddPartWindow", "Model_id"))
+
+
+def check_value_comboBox3(magazyn):
+    print(magazyn)
+    print(type(magazyn))
+    if magazyn == "GGG":
+        return 1
+    else:
+        return 2
+
+
+def check_value_comboBox5(model):
+    if model == "gallardo":
+        return 1
+    elif model == "qashqai":
+        return 2
+    elif model == "Q5":
+        return 3
+    elif model == "passat":
+        return 4
+    elif model == "urus":
+        return 5
+    elif model == "Tiguan":
+        return 6
+    else:
+        return 7
+
 
 
 

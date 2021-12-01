@@ -140,7 +140,7 @@ class Ui_ThirdSetupWindow(object):
     def retranslateUi(self, ThirdSetupWindow):
         _translate = QtCore.QCoreApplication.translate
         ThirdSetupWindow.setWindowTitle(_translate("ThirdSetupWindow", "Magazyn B"))
-        self.przegladajauto.setText(_translate("ThirdSetupWindow", "Dodaj auto"))
+        self.przegladajauto.setText(_translate("ThirdSetupWindow", "Auta"))
         self.znajdzczesc.setText(_translate("ThirdSetupWindow", "Znajdź część"))
         self.dodajczesc.setText(_translate("ThirdSetupWindow", "Dodaj część"))
         self.znajdzklienci.setText(_translate("ThirdSetupWindow", "Klienci"))
