@@ -3,11 +3,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_AddPartWindow(object):
     def update(self):
-        txt = self.inputBox1.toPlainText()
-        pass
+        nazwa = self.inputBox1.toPlainText()
+        opis = self.inputBox2.toPlainText()
+        magazyn_id = self.inputBox3.toPlainText()
+        liczba_sztuk = self.inputBox4.toPlainText()
+        model_id = self.inputBox5.toPlainText()
+
+        print(nazwa + "-" + opis + "-" + magazyn_id + "-" + liczba_sztuk + "-" +
+              model_id)
 
 
-    def setupUi(self, AddPartWindow, sql_code):
+    def setupUi(self, AddPartWindow, sql_code, adress):
         AddPartWindow.setObjectName("SearchPartWindow")
         AddPartWindow.resize(250, 350)
         self.centralwidget = QtWidgets.QWidget(AddPartWindow)

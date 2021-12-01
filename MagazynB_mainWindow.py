@@ -8,32 +8,48 @@ from przegladanie_auta import Ui_ViewCarsWindow
 
 
 class Ui_ThirdSetupWindow(object):
+    adress = 'c##scott/tiger@//192.168.0.6:1521/magazyn'
+
     def openWindow(self, number):
         if number == 1:
+            sql_code = """SELECT * FROM """
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_AddPartWindow()
-            self.ui.setupUi(self.window, 1)
+            self.ui.setupUi(self.window, sql_code, self.adress)
             self.window.show()
         elif number == 2:
+            sql_code = """SELECT * FROM """
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_SearchPartWindow()
-            self.ui.setupUi(self.window, 1)
+            self.ui.setupUi(self.window, sql_code, self.adress)
             self.window.show()
         elif number == 3:
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_ViewPartsWindow()
-            self.ui.setupUi(self.window, 1)
-            self.window.show()
+            try:
+                sql_code = """SELECT * FROM czesc_view"""
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_ViewPartsWindow()
+                self.ui.setupUi(self.window, sql_code, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
         elif number == 4:
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_ViewClientsWindow()
-            self.ui.setupUi(self.window, 1)
-            self.window.show()
+            try:
+                sql_code = """SELECT * FROM """
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_ViewClientsWindow()
+                self.ui.setupUi(self.window, sql_code, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
         else:
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_ViewCarsWindow()
-            self.ui.setupUi(self.window, 1)
-            self.window.show()
+            try:
+                sql_code = """SELECT * FROM """
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_ViewCarsWindow()
+                self.ui.setupUi(self.window, sql_code, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
 
     def setupUi(self, ThirdSetupWindow):
         ThirdSetupWindow.setObjectName("ThirdSetupWindow")
@@ -49,22 +65,22 @@ class Ui_ThirdSetupWindow(object):
         self.znajdzczesc.clicked.connect(lambda: self.openWindow(2))
         self.znajdzczesc.setGeometry(QtCore.QRect(20, 110, 215, 70))
 
-        self.dodajauto = QtWidgets.QPushButton(self.centralwidget)
-        self.dodajauto.clicked.connect(lambda: self.openWindow(3))
-        self.dodajauto.setGeometry(QtCore.QRect(20, 200, 215, 70))
+        self.przegladajczesci = QtWidgets.QPushButton(self.centralwidget)
+        self.przegladajczesci.clicked.connect(lambda: self.openWindow(3))
+        self.przegladajczesci.setGeometry(QtCore.QRect(20, 200, 215, 70))
 
         self.znajdzklienci = QtWidgets.QPushButton(self.centralwidget)
         self.znajdzklienci.clicked.connect(lambda: self.openWindow(4))
         self.znajdzklienci.setGeometry(QtCore.QRect(20, 290, 215, 70))
 
-        self.przegladajczesci = QtWidgets.QPushButton(self.centralwidget)
-        self.przegladajczesci.clicked.connect(lambda: self.openWindow(5))
-        self.przegladajczesci.setGeometry(QtCore.QRect(20, 380, 215, 70))
+        self.przegladajauto = QtWidgets.QPushButton(self.centralwidget)
+        self.przegladajauto.clicked.connect(lambda: self.openWindow(5))
+        self.przegladajauto.setGeometry(QtCore.QRect(20, 380, 215, 70))
 
         font = QtGui.QFont()
         font.setPointSize(17)
-        self.dodajauto.setFont(font)
-        self.dodajauto.setObjectName("dodajauto")
+        self.przegladajauto.setFont(font)
+        self.przegladajauto.setObjectName("przegladajauto")
 
         self.dodajczesc.setFont(font)
         self.dodajczesc.setObjectName("dodajczesc")
@@ -103,7 +119,7 @@ class Ui_ThirdSetupWindow(object):
     def retranslateUi(self, ThirdSetupWindow):
         _translate = QtCore.QCoreApplication.translate
         ThirdSetupWindow.setWindowTitle(_translate("ThirdSetupWindow", "Magazyn B"))
-        self.dodajauto.setText(_translate("ThirdSetupWindow", "Dodaj auto"))
+        self.przegladajauto.setText(_translate("ThirdSetupWindow", "Dodaj auto"))
         self.znajdzczesc.setText(_translate("ThirdSetupWindow", "Znajdź część"))
         self.dodajczesc.setText(_translate("ThirdSetupWindow", "Dodaj część"))
         self.znajdzklienci.setText(_translate("ThirdSetupWindow", "Klienci"))

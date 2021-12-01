@@ -4,8 +4,8 @@ import main
 
 
 class Ui_ViewCarsWindow(object):
-    def setupUi(self, ViewCarsWindow, sql_code):
-        p1 = main.DB('c##scott/tiger@//192.168.0.8:1521/orcl1')
+    def setupUi(self, ViewCarsWindow, sql_code, adress):
+        p1 = main.DB(adress)
         p1.execute_query(sql_code)
         ViewCarsWindow.setObjectName("ViewCarsWindow")
         ViewCarsWindow.resize(700, 700)

@@ -8,32 +8,49 @@ from przegladanie_auta import Ui_ViewCarsWindow
 
 
 class Ui_SecondSetupWindow(object):
+
+    adress = 'c##scott/tiger@//192.168.0.8:1521/orcl1'
+
     def openWindow(self, number):
         if number == 1:
+            sql_code = """SELECT * FROM """
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_AddPartWindow()
-            self.ui.setupUi(self.window, 1)
+            self.ui.setupUi(self.window, sql_code, self.adress)
             self.window.show()
         elif number == 2:
+            sql_code = """SELECT * FROM """
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_SearchPartWindow()
-            self.ui.setupUi(self.window, 1)
+            self.ui.setupUi(self.window, sql_code, self.adress)
             self.window.show()
         elif number == 3:
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_ViewPartsWindow()
-            self.ui.setupUi(self.window, 1)
-            self.window.show()
+            try:
+                sql_code = """SELECT * FROM czesc_view"""
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_ViewPartsWindow()
+                self.ui.setupUi(self.window, sql_code, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
         elif number == 4:
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_ViewClientsWindow()
-            self.ui.setupUi(self.window, 1)
-            self.window.show()
+            try:
+                sql_code = """SELECT * FROM """
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_ViewClientsWindow()
+                self.ui.setupUi(self.window, sql_code, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
         else:
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_ViewCarsWindow()
-            self.ui.setupUi(self.window, 1)
-            self.window.show()
+            try:
+                sql_code = """SELECT * FROM """
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_ViewCarsWindow()
+                self.ui.setupUi(self.window, sql_code, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
 
     def setupUi(self, SecondSetupWindow):
         SecondSetupWindow.setObjectName("SecondSetupWindow")

@@ -12,7 +12,7 @@ class Ui_SearchPartWindow(object):
         self.window.show()
 
 
-    def setupUi(self, SearchPartWindow, sql_code):
+    def setupUi(self, SearchPartWindow, sql_code, adress):
         SearchPartWindow.setObjectName("SearchPartWindow")
         SearchPartWindow.resize(500, 410)
         self.centralwidget = QtWidgets.QWidget(SearchPartWindow)
