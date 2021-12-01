@@ -11,10 +11,13 @@ class Ui_AddPartWindow(object):
         liczba_sztuk = self.inputBox4.toPlainText()
         model_id = self.inputBox5.toPlainText()
 
-        print(nazwa + "-" + opis + "-" + magazyn_id + "-" + liczba_sztuk + "-" +
-              model_id)
-        p1 = main.DB(self.adress)
-        p1.cur.callproc('DODAJ_CZESC', [str(nazwa).lower(), str(opis).lower(), int(magazyn_id), int(liczba_sztuk), int(model_id)])
+        try:
+            print(nazwa + "-" + opis + "-" + magazyn_id + "-" + liczba_sztuk + "-" +
+                  model_id)
+            p1 = main.DB(self.adress)
+            p1.cur.callproc('DODAJ_CZESC', [str(nazwa).lower(), str(opis).lower(), int(magazyn_id), int(liczba_sztuk), int(model_id)])
+        except:
+            print("Błąd przy dodawaniu")
 
 
     def setupUi(self, AddPartWindow, adress):

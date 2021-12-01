@@ -7,10 +7,13 @@ class Ui_SearchPartWindow(object):
     def openWindow(self):
         part_txt = str(self.inputBox.toPlainText()).lower()
         sql = "SELECT * FROM czesc_view WHERE '" + part_txt + "' IN(czesc_nazwa, marka_nazwa, model_nazwa)"
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_ViewPartsWindow()
-        self.ui.setupUi(self.window, sql, self.adress)
-        self.window.show()
+        try:
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_ViewPartsWindow()
+            self.ui.setupUi(self.window, sql, self.adress)
+            self.window.show()
+        except:
+            print("Błąd przy szukaniu cześci")
 
 
     def setupUi(self, SearchPartWindow, adress):

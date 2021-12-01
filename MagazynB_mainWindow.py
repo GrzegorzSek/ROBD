@@ -12,15 +12,21 @@ class Ui_ThirdSetupWindow(object):
 
     def openWindow(self, number):
         if number == 1:
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_AddPartWindow()
-            self.ui.setupUi(self.window, self.adress)
-            self.window.show()
+            try:
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_AddPartWindow()
+                self.ui.setupUi(self.window, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
         elif number == 2:
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_SearchPartWindow()
-            self.ui.setupUi(self.window, self.adress)
-            self.window.show()
+            try:
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_SearchPartWindow()
+                self.ui.setupUi(self.window, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
         elif number == 3:
             try:
                 sql_code = """SELECT * FROM czesc_view"""
