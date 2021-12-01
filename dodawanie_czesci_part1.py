@@ -7,13 +7,14 @@ class Ui_AddPartWindow(object):
     def update(self):
         nazwa = self.inputBox1.toPlainText()
         opis = self.inputBox2.toPlainText()
-        magazyn_id = self.inputBox3.toPlainText()
+        magazyn_id = self.comboBox3.currentText()
         liczba_sztuk = self.inputBox4.toPlainText()
-        model_id = self.inputBox5.toPlainText()
+        model_id = self.comboBox5.currentText()
 
+        print(nazwa + "-" + opis + "-" + magazyn_id + "-" + liczba_sztuk + "-" +
+              model_id)
         try:
-            print(nazwa + "-" + opis + "-" + magazyn_id + "-" + liczba_sztuk + "-" +
-                  model_id)
+
             p1 = main.DB(self.adress)
             p1.cur.callproc('DODAJ_CZESC', [str(nazwa).lower(), str(opis).lower(), int(magazyn_id), int(liczba_sztuk), int(model_id)])
         except:
@@ -48,9 +49,13 @@ class Ui_AddPartWindow(object):
         self.label3 = QtWidgets.QLabel(self.centralwidget)
         self.label3.setGeometry(QtCore.QRect(20, 140, 70, 30))
 
-        self.inputBox3 = QtWidgets.QTextEdit(self.centralwidget)
-        self.inputBox3.setGeometry((QtCore.QRect(110, 140, 110, 30)))
-        txt = self.inputBox3.toPlainText()
+        # self.inputBox3 = QtWidgets.QTextEdit(self.centralwidget)
+        # self.inputBox3.setGeometry((QtCore.QRect(110, 140, 110, 30)))
+        self.comboBox3 = QtWidgets.QComboBox(self.centralwidget)
+        self.comboBox3.setGeometry(QtCore.QRect(110, 140, 110, 30))
+        self.comboBox3.addItem("1")
+        self.comboBox3.addItem("2")
+
         # IV rząd
         self.label4 = QtWidgets.QLabel(self.centralwidget)
         self.label4.setGeometry(QtCore.QRect(20, 180, 70, 30))
@@ -62,9 +67,16 @@ class Ui_AddPartWindow(object):
         self.label5 = QtWidgets.QLabel(self.centralwidget)
         self.label5.setGeometry(QtCore.QRect(20, 220, 70, 30))
 
-        self.inputBox5 = QtWidgets.QTextEdit(self.centralwidget)
-        self.inputBox5.setGeometry((QtCore.QRect(110, 220, 110, 30)))
-        txt = self.inputBox5.toPlainText()
+        # self.inputBox5 = QtWidgets.QTextEdit(self.centralwidget)
+        # self.inputBox5.setGeometry((QtCore.QRect(110, 220, 110, 30)))
+        self.comboBox5 = QtWidgets.QComboBox(self.centralwidget)
+        self.comboBox5.setGeometry(QtCore.QRect(110, 220, 110, 30))
+        self.comboBox5.addItem("1")
+        self.comboBox5.addItem("2")
+        self.comboBox5.addItem("3")
+        self.comboBox5.addItem("4")
+        self.comboBox5.addItem("5")
+        self.comboBox5.addItem("6")
 
 
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
