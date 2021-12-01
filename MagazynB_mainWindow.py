@@ -4,6 +4,8 @@ from dodawanie_czesci_part1 import Ui_AddPartWindow
 from przegladanie_czesci import Ui_ViewPartsWindow
 from przegladanie_klienci import Ui_ViewClientsWindow
 from przegladanie_auta import Ui_ViewCarsWindow
+from dodawanie_klient import Ui_AddClientWindow
+
 
 
 
@@ -45,7 +47,7 @@ class Ui_ThirdSetupWindow(object):
                 self.window.show()
             except:
                 print("Błąd")
-        else:
+        elif number == 5:
             try:
                 sql_code = """SELECT * FROM auta_view"""
                 self.window = QtWidgets.QMainWindow()
@@ -54,10 +56,18 @@ class Ui_ThirdSetupWindow(object):
                 self.window.show()
             except:
                 print("Błąd")
+        else:
+            try:
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_AddClientWindow()
+                self.ui.setupUi(self.window, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
 
     def setupUi(self, ThirdSetupWindow):
         ThirdSetupWindow.setObjectName("ThirdSetupWindow")
-        ThirdSetupWindow.resize(750, 500)
+        ThirdSetupWindow.resize(750, 600)
         self.centralwidget = QtWidgets.QWidget(ThirdSetupWindow)
         self.centralwidget.setObjectName("centralwidget")
 
@@ -81,6 +91,10 @@ class Ui_ThirdSetupWindow(object):
         self.przegladajauto.clicked.connect(lambda: self.openWindow(5))
         self.przegladajauto.setGeometry(QtCore.QRect(20, 380, 215, 70))
 
+        self.dodajklienta = QtWidgets.QPushButton(self.centralwidget)
+        self.dodajklienta.clicked.connect(lambda: self.openWindow(6))
+        self.dodajklienta.setGeometry(QtCore.QRect(20, 470, 215, 70))
+
         font = QtGui.QFont()
         font.setPointSize(17)
         self.przegladajauto.setFont(font)
@@ -98,8 +112,11 @@ class Ui_ThirdSetupWindow(object):
         self.przegladajczesci.setFont(font)
         self.przegladajczesci.setObjectName("przegladajczesci")
 
+        self.dodajklienta.setFont(font)
+        self.dodajklienta.setObjectName("dodajklienta")
+
         self.photo = QtWidgets.QLabel(self.centralwidget)
-        self.photo.setGeometry(QtCore.QRect(250, 80, 455, 338))
+        self.photo.setGeometry(QtCore.QRect(250, 20, 455, 338))
         self.photo.setText("")
         self.photo.setPixmap(QtGui.QPixmap("logo.png"))
         self.photo.setScaledContents(True)
@@ -128,6 +145,8 @@ class Ui_ThirdSetupWindow(object):
         self.dodajczesc.setText(_translate("ThirdSetupWindow", "Dodaj część"))
         self.znajdzklienci.setText(_translate("ThirdSetupWindow", "Klienci"))
         self.przegladajczesci.setText(_translate("ThirdSetupWindow", "Części"))
+        self.dodajklienta.setText(_translate("SecondSetupWindow", "Dodaj klienta"))
+
 
 
 
