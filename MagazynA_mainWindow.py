@@ -5,6 +5,8 @@ from przegladanie_czesci import Ui_ViewPartsWindow
 from przegladanie_klienci import Ui_ViewClientsWindow
 from przegladanie_auta import Ui_ViewCarsWindow
 from dodawanie_klient import Ui_AddClientWindow
+from przegladanie_zamowienia import  Ui_SearchOrderWindow
+from przegladanie_zawartosc_zamowienia import Ui_SearchOrderContentWindow
 
 
 
@@ -56,7 +58,7 @@ class Ui_SecondSetupWindow(object):
                 self.window.show()
             except:
                 print("Błąd")
-        else:
+        elif number == 6:
             try:
                 self.window = QtWidgets.QMainWindow()
                 self.ui = Ui_AddClientWindow()
@@ -64,10 +66,26 @@ class Ui_SecondSetupWindow(object):
                 self.window.show()
             except:
                 print("Błąd")
+        elif number == 7:
+            try:
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_SearchOrderWindow()
+                self.ui.setupUi(self.window, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
+        else:
+            try:
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_SearchOrderContentWindow()
+                self.ui.setupUi(self.window, self.adress)
+                self.window.show()
+            except:
+                print("Błąd")
 
     def setupUi(self, SecondSetupWindow):
         SecondSetupWindow.setObjectName("SecondSetupWindow")
-        SecondSetupWindow.resize(750, 600)
+        SecondSetupWindow.resize(750,750)
         self.centralwidget = QtWidgets.QWidget(SecondSetupWindow)
         self.centralwidget.setObjectName("centralwidget")
 
@@ -95,8 +113,16 @@ class Ui_SecondSetupWindow(object):
         self.dodajklienta.clicked.connect(lambda: self.openWindow(6))
         self.dodajklienta.setGeometry(QtCore.QRect(20, 470, 215, 70))
 
+        self.przegladajzamowienia = QtWidgets.QPushButton(self.centralwidget)
+        self.przegladajzamowienia.clicked.connect(lambda: self.openWindow(7))
+        self.przegladajzamowienia.setGeometry(QtCore.QRect(20, 560, 215, 70))
+
+        self.przegladajzamowienie = QtWidgets.QPushButton(self.centralwidget)
+        self.przegladajzamowienie.clicked.connect(lambda: self.openWindow(8))
+        self.przegladajzamowienie.setGeometry(QtCore.QRect(20, 650, 215, 70))
+
         font = QtGui.QFont()
-        font.setPointSize(17)
+        font.setPointSize(14)
         self.przegladajauto.setFont(font)
         self.przegladajauto.setObjectName("przegladajauto")
 
@@ -114,6 +140,12 @@ class Ui_SecondSetupWindow(object):
 
         self.dodajklienta.setFont(font)
         self.dodajklienta.setObjectName("dodajklienta")
+
+        self.przegladajzamowienia.setFont(font)
+        self.przegladajzamowienia.setObjectName("przegladajzamowienia")
+
+        self.przegladajzamowienie.setFont(font)
+        self.przegladajzamowienie.setObjectName("przegladajzamowienie")
 
         self.photo = QtWidgets.QLabel(self.centralwidget)
         self.photo.setGeometry(QtCore.QRect(250, 20, 455, 338))
@@ -144,6 +176,9 @@ class Ui_SecondSetupWindow(object):
         self.znajdzklienci.setText(_translate("SecondSetupWindow", "Klienci"))
         self.przegladajczesci.setText(_translate("SecondSetupWindow", "Części"))
         self.dodajklienta.setText(_translate("SecondSetupWindow", "Dodaj klienta"))
+        self.przegladajzamowienia.setText(_translate("SecondSetupWindow", "Zamówienia klienta"))
+        self.przegladajzamowienie.setText(_translate("SecondSetupWindow", "Zobacz zamówienie"))
+
 
 
 

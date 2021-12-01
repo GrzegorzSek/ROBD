@@ -3,7 +3,7 @@ import main
 
 
 class Ui_AddPartWindow(object):
-    adress = None;
+    adress = None
     def update(self):
         nazwa = self.inputBox1.toPlainText()
         opis = self.inputBox2.toPlainText()
