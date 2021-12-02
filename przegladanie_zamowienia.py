@@ -6,7 +6,7 @@ class Ui_SearchOrderWindow(object):
     adress = None
     def openWindow(self):
         client_id = str(self.inputBox.toPlainText()).lower()
-        sql = "SELECT * FROM zamowienie_view WHERE klient_id='" + client_id + "'"
+        sql = "SELECT * FROM zamowienie_view WHERE klient_id='" + int(client_id) + "'"
         try:
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_ViewOrdersWindow()
@@ -64,7 +64,7 @@ class Ui_SearchOrderWindow(object):
         _translate = QtCore.QCoreApplication.translate
         SearchOrderWindow.setWindowTitle(_translate("SearchOrderWindow", "Przeglądanie zamówień"))
         self.pushButton.setText(_translate("SearchOrderWindow", "Szukaj"))
-        self.label.setText(_translate("SearchOrderWindow", "Wyszukaj zamówienia"))
+        self.label.setText(_translate("SearchOrderWindow", "Wyszukaj klienta"))
 
 
 
