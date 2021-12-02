@@ -12,7 +12,7 @@ class Ui_ViewOrdersContentWindow(object):
         self.tableWidget = QtWidgets.QTableWidget(ViewOrdersContentWindow)
         self.tableWidget.setGeometry(QtCore.QRect(20, 20, 660, 660))
         self.tableWidget.setColumnCount(2)
-        self.tableWidget.setHorizontalHeaderLabels(["Nazwa części", "Model"])
+        self.tableWidget.setHorizontalHeaderLabels(["Model", "Nazwa cześci"])
         for line in p1.cur:
             print(line)
             rows = self.tableWidget.rowCount()
@@ -24,7 +24,7 @@ class Ui_ViewOrdersContentWindow(object):
 
         header = self.tableWidget.horizontalHeader()
         header.setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
         header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
 
 
