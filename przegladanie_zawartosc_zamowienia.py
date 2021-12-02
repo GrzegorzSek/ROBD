@@ -6,7 +6,7 @@ class Ui_SearchOrderContentWindow(object):
     adress = None
     def openWindow(self):
         order_id = str(self.inputBox.toPlainText()).lower()
-        sql = "SELECT * FROM zawartosc_zamowienia_view WHERE zamowienie_id= '" + order_id + "'"
+        sql = "SELECT * FROM zawartosc_zamowienia_view WHERE zamowienie_id= '" + str(order_id) + "'"
         try:
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_ViewOrdersContentWindow()

@@ -18,9 +18,11 @@ class DB:
 
 
 
-#p1 = DB('c##scott/tiger@//192.168.0.8:1521/orcl1')
+#p1 = DB('c##scott/tiger@//192.168.0.3:1521/orcl1')
 #part = "Nadkole"
 #sql = "SELECT * FROM czesc_view WHERE '" + part + "' IN(czesc_nazwa, marka_nazwa, model_nazwa)"
+#client_id = "2"
+#sql = "SELECT * FROM zamowienie_view WHERE klient_id='" + str(client_id) + "'"
 #print(sql)
 #p1.execute_query("SELECT * FROM czesc_view WHERE 'Nadkole' IN(czesc_nazwa, marka_nazwa, model_nazwa)")
 #p1.execute_query(sql)

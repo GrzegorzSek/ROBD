@@ -17,9 +17,9 @@ class Ui_ViewOrdersWindow(object):
             print(line)
             rows = self.tableWidget.rowCount()
             self.tableWidget.setRowCount(rows + 1)
-            self.tableWidget.setItem(rows, 0, QTableWidgetItem(line[0]))
-            self.tableWidget.setItem(rows, 1, QTableWidgetItem(line[1]))
-            self.tableWidget.setItem(rows, 2, QTableWidgetItem(line[2]))
+            self.tableWidget.setItem(rows, 0, QTableWidgetItem(str(line[0])))
+            self.tableWidget.setItem(rows, 1, QTableWidgetItem(str(line[1])))
+            self.tableWidget.setItem(rows, 2, QTableWidgetItem(str(line[2])))
             self.tableWidget.setItem(rows, 3, QTableWidgetItem(line[3]))
 
 
